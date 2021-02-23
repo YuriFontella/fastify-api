@@ -2,19 +2,19 @@
 
 Projeto demo utilizando os seguintes plugins:
 
-* "fastify-auth": "^1.0.1"
-* "fastify-autoload": "^3.3.1"
-* "fastify-compress": "^3.4.0"
-* "fastify-cors": "^5.0.0"
-* "fastify-guard": "^1.2.0"
-* "fastify-helmet": "^5.0.3"
-* "fastify-jwt": "^2.1.3"
-* "fastify-knexjs": "^1.0.14"
-* "fastify-multipart": "^3.3.0"
-* "fastify-nodemailer": "^5.0.0"
-* "fastify-rate-limit": "^4.0.3"
-* "fastify-socket.io": "^1.0.0"
-* "fastify-static": "^3.3.0"
+* "fastify-auth"
+* "fastify-autoload"
+* "fastify-compress"
+* "fastify-cors"
+* "fastify-guard"
+* "fastify-helmet"
+* "fastify-jwt"
+* "fastify-knexjs"
+* "fastify-multipart"
+* "fastify-nodemailer"
+* "fastify-rate-limit"
+* "fastify-socket.io"
+* "fastify-static"
 
 ```bash
 npm install
