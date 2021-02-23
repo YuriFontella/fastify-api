@@ -1,0 +1,34 @@
+{
+  "name": "fastify-api",
+  "version": "1.0.0",
+  "description": "API",
+  "main": "app.js",
+  "scripts": {
+    "server": "fastify start -w -l info -P app.js",
+    "dev": "nodemon app.js",
+    "migrate": "npx knex migrate:latest"
+  },
+  "keywords": [],
+  "author": "Yuri Fontella",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "fastify": "^3.12.0",
+    "fastify-auth": "^1.0.1",
+    "fastify-autoload": "^3.4.2",
+    "fastify-cli": "^2.7.0",
+    "fastify-compress": "^3.4.1",
+    "fastify-cors": "^5.2.0",
+    "fastify-guard": "^1.2.0",
+    "fastify-helmet": "^5.2.0",
+    "fastify-jwt": "^2.3.0",
+    "fastify-knexjs": "^1.1.0",
+    "fastify-multipart": "^4.0.0",
+    "fastify-nodemailer": "^5.0.0",
+    "fastify-plugin": "^3.0.0",
+    "fastify-rate-limit": "^5.2.0",
+    "fastify-socket.io": "^1.0.2",
+    "fastify-static": "^4.0.1",
+    "pg": "^8.5.1"
+  }
+}
