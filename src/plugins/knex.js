@@ -2,7 +2,7 @@
 
 const fp = require('fastify-plugin')
 
-const db = require('../../knexfile')
+const db = require('../../config/knexfile')
 
 module.exports = fp(async (app) => {
 

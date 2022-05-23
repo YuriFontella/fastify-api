@@ -2,19 +2,19 @@
 
 Projeto demo utilizando os seguintes plugins:
 
-* "fastify-auth"
-* "fastify-autoload"
-* "fastify-compress"
-* "fastify-cors"
+* "@fastify/auth"
+* "@fastify/autoload"
+* "@fastify/compress"
+* "@fastify/cors"
 * "fastify-guard"
-* "fastify-helmet"
-* "fastify-jwt"
+* "@fastify/helmet"
+* "@fastify/jwt"
 * "fastify-knexjs"
-* "fastify-multipart"
+* "@fastify/multipart"
 * "fastify-nodemailer"
-* "fastify-rate-limit"
+* "@fastify/rate-limit"
 * "fastify-socket.io"
-* "fastify-static"
+* "@fastify/static"
 
 ```bash
 npm install

@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('path')
-const autoload = require('fastify-autoload')
+const autoload = require('@fastify/autoload')
 
 const fastify = require('fastify')
 
