@@ -12,7 +12,13 @@ module.exports = async (app) => {
     ], { run: 'all' }),
 
     handler: (request, reply) => {
-      return reply.send({ token: request.token })
+
+      if (request.token) {
+
+        reply.send({ token: request.token })
+      }
+
+      throw Error('Houve algum problema')
     }
   })
 
