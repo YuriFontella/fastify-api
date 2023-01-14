@@ -5,30 +5,41 @@ const fs = require('fs')
 
 module.exports = fp(async (app) => {
 
-  app.addHook('preHandler', async (request, reply) => {
-    let token = request.headers['x-access-token']
+  app.addHook('onRequest', async (request, reply) => {
 
-    if (token) {
+    try {
 
-      await app.jwt.verify(token, async (error) => {
-        if (error)
-          return app.message.token(reply)
-      })
+      const token = request.headers['x-access-token']
 
-      const jwt = app.jwt.decode(token)
+      if (token) {
 
-      let [user] = await app.knex('users')
-        .select('users.id', 'users.role', 'tokens.is_revoked')
-        .innerJoin('tokens', 'users.id', 'tokens.user_id')
-        .where('users.id', jwt.token)
-        .orderBy('tokens.id', 'desc')
-        .limit(1)
+        const jwt = app.jwt.verify(token)
 
-      if (user)
-        if (user.is_revoked)
-          return app.message.login(reply)
-        else
+        let [user] = await app.knex('users')
+          .select('users.id', 'users.role', 'tokens.is_revoked')
+          .innerJoin('tokens', 'users.id', 'tokens.user_id')
+          .where('users.id', jwt.token)
+          .orderBy('tokens.id', 'desc')
+          .limit(1)
+
+        if (!user) {
+
+          throw Error('Usuário não autenticado')
+        }
+
+        else {
+
           request.user = { id: user.id, role: [user.role] }
+        }
+      }
+
+    }
+
+    catch (e) {
+
+      console.log(e)
+
+      throw Error(e.message)
     }
   })
 
