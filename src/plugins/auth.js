@@ -23,7 +23,7 @@ module.exports = fp(async (app) => {
     })
     .decorate('registerToken', (request, reply, done) => {
       if (request.user)
-        request.token = app.jwt.sign(request.user.id)
+        request.token = app.jwt.sign({ token: request.user.id })
 
       done()
     })
