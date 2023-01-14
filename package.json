@@ -4,9 +4,10 @@
   "description": "API",
   "main": "app.js",
   "scripts": {
-    "server": "fastify start -w -l info -P app.js",
-    "dev": "nodemon app.js",
-    "migrate": "npx knex migrate:latest"
+    "start": "NODE_ENV=production node app.js",
+    "dev": "NODE_ENV=development nodemon app.js",
+    "latest": "knex migrate:latest --knexfile=config/knexfile",
+    "seed": "knex seed:run --knexfile=config/knexfile"
   },
   "keywords": [],
   "author": "Yuri Fontella",
