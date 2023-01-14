@@ -6,32 +6,61 @@ module.exports = fp(async (app) => {
 
   app
     .decorate('verifyUser', async (request, reply, done) => {
-      let user = await app.knex('users').where('name', request.body.name).first()
 
-      if (user) {
-        let password = app.bcrypt.decrypt(request.body.password, user.password)
+      try {
 
-        if (password) {
-          request.user = { id: user.id }
+        const user = await app.knex('users').where('name', request.body.name).first()
 
-          return done()
+        if (user) {
+          const password = app.bcrypt.decrypt(request.body.password, user.password)
+
+          if (password) {
+            request.user = { id: user.id }
+          }
+
+          else reply.code(404).send('Usuário ou senha incorretos')
         }
+
       }
 
-      reply.code(404).send('Usuário ou senha incorreto')
+      catch (e) {
+
+        throw Error(e.message)
+      }
 
     })
-    .decorate('registerToken', (request, reply, done) => {
-      if (request.user)
-        request.token = app.jwt.sign({ token: request.user.id })
+    .decorate('registerToken', (request) => {
 
-      done()
+      try {
+
+        if (request.user) {
+
+          request.token = app.jwt.sign({ token: request.user.id })
+        }
+
+      }
+
+      catch (e) {
+
+        throw Error(e.message)
+      }
+
     })
-    .decorate('saveConnection', async (request, reply, done) => {
-      if (request.token)
-        await app.knex('tokens').insert({ user_id: request.user.id })
+    .decorate('saveConnection', async (request) => {
 
-      done()
+      try {
+
+        if (request.access_token) {
+
+          await app.knex('tokens').insert({ user_id: request.user.id })
+        }
+
+      } catch (e) {
+
+        throw Error(e.message)
+
+      }
+
     })
     .register(require('@fastify/auth'))
 })
