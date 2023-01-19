@@ -5,20 +5,22 @@ const fp = require('fastify-plugin')
 module.exports = fp(async (app) => {
 
   app
-    .decorate('verifyUser', async (request, reply, done) => {
+    .decorate('verifyUser', async (request, reply) => {
 
       try {
 
         const user = await app.knex('users').where('name', request.body.name).first()
 
         if (user) {
+
           const password = app.bcrypt.decrypt(request.body.password, user.password)
 
           if (password) {
-            request.user = { id: user.id }
+
+            return request.user = { id: user.id }
           }
 
-          else reply.code(404).send('Usuário ou senha incorretos')
+          reply.code(404).send('Usuário ou senha incorretos')
         }
 
       }
