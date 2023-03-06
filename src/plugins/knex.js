@@ -33,4 +33,5 @@ function plugin(app, opts, next) {
 
 module.exports = fp(async (app) => {
   app.register(fp(plugin), knexfile[process.env.NODE_ENV])
-})
+
+}, { name: 'knex' })

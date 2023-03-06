@@ -13,23 +13,23 @@
   "author": "Yuri Fontella",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
-    "fastify": "^4.11.0",
     "@fastify/auth": "^4.2.0",
     "@fastify/autoload": "^5.7.1",
-    "fastify-cli": "^5.7.1",
     "@fastify/compress": "^6.2.0",
     "@fastify/cors": "^8.2.0",
-    "fastify-guard": "^2.0.0",
     "@fastify/helmet": "^10.1.0",
     "@fastify/jwt": "^6.5.0",
     "@fastify/multipart": "^7.4.0",
+    "@fastify/rate-limit": "^7.6.0",
+    "@fastify/static": "^6.6.1",
+    "bcrypt": "^5.1.0",
+    "fastify": "^4.11.0",
+    "fastify-cli": "^5.7.1",
+    "fastify-guard": "^2.0.0",
     "fastify-nodemailer": "^5.0.0",
     "fastify-plugin": "^4.5.0",
-    "@fastify/rate-limit": "^7.6.0",
-    "fastify-socket.io": "^4.0.0",
-    "@fastify/static": "^6.6.1",
     "knex": "^2.4.0",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "socket.io": "^4.6.1"
   }
 }
